@@ -15,7 +15,7 @@ export class TodoListItemComponent implements OnInit {
 
   public isEditing: boolean;
 
-  public description: sting;
+  public description: string;
 
   constructor(public todoApiService: TodoApiService) {
   }
