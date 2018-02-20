@@ -1,0 +1,26 @@
+
+<div class="control-block">
+  <div *ngIf="!isCreatedNew">
+    <button mat-raised-button color="primary" (click)="startCreateNew()">Add New</button>
+    <button mat-raised-button color="warn" (click)="deleteAllTodos()">Delete All</button>
+  </div>
+
+  <div class="flex-container new-todo-container" *ngIf="isCreatedNew">
+    <mat-form-field class="new-todo-input">
+      <input matInput="text" placeholder="Description of new Todo Item" [(ngModel)]="newTodoDesc">
+    </mat-form-field>
+    <button mat-icon-button color="primary" (click)="saveNew()">
+      <mat-icon aria-label="Example icon-button with a heart icon">save</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" (click)="cancelCreateNew()">
+      <mat-icon aria-label="Example icon-button with a heart icon">cancel</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div class="list">
+  <app-todo-list-item *ngFor="let item of todos" [todo]="item" (deleteListItem)="test($event)"></app-todo-list-item>
+</div>
+
+
+

@@ -20,7 +20,36 @@ exports.create = function (req, res) {
       console.log(err);
       return res.sendStatus(500);
     }
-    res.sendStatus(200);
+    res.send(todo);
   })
 };
 
+exports.deleteAll = function (req, res) {
+  Todos.deleteAll(function (err, result) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
+    res.json({status: 'deleted'});
+  })
+};
+
+exports.deleteItem = function (req, res) {
+  Todos.deleteItem(req.params.id, function (err, result) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
+    res.json({status: 'deleted'});
+  })
+};
+
+exports.updateItem = function (req, res) {
+  Todos.updateItem(req.body.item._id, {desc: req.body.item.desc, done: req.body.item.done}, function (err, result) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
+    res.send(req.body.item);
+  })
+};

@@ -12,3 +12,25 @@ exports.create = function (item, cb) {
     cb(err, result);
   })
 };
+
+exports.deleteAll = function (cb) {
+  db.get().collection('todos').remove(function (err, result) {
+    cb(err, result);
+  })
+}
+
+exports.deleteItem = function (id, cb) {
+  db.get().collection('todos').deleteOne({_id: ObjectID(id)}, function (err, result) {
+    cb(err, result);
+  })
+};
+
+exports.updateItem = function (id, item, cb) {
+  db.get().collection('todos').updateOne(
+    {_id: ObjectID(id)},
+    item,
+    function (err, result) {
+      cb(err, result);
+    }
+  )
+};

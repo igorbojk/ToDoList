@@ -1,0 +1,30 @@
+.mat-card{
+  margin-bottom: 8px;
+}
+.mat-card.gray{
+  background: lightgray;
+}
+.flex-container{
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.mat-card .info{
+  display: flex;
+  flex: 1 1 auto;
+  max-width: calc( 100% - 132px);
+  margin-top: 12px;
+}
+
+.description{
+  margin-left: 16px;
+  font-size: 18px;
+}
+
+.editing-input{
+  flex: 1 1 auto;
+  max-width: calc( 100% - 132px);
+}
+
+.description.done {
+  text-decoration: line-through;
+}

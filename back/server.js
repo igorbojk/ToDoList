@@ -14,6 +14,11 @@ app.get('/todos', ToDoController.getAll);
 
 app.post('/todos', ToDoController.create);
 
+app.delete('/todos', ToDoController.deleteAll);
+
+app.delete('/todos/:id', ToDoController.deleteItem);
+
+app.put('/todos/:id', ToDoController.updateItem);
 
 db.connect('mongodb://localhost:27017/myapi', function (err) {
   if (err) {

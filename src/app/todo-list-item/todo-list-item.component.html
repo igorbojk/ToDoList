@@ -1,0 +1,32 @@
+<mat-card [ngClass]="{'gray': todo.done}">
+  <div class="flex-container" *ngIf="!isEditing">
+    <div class="info">
+      <mat-checkbox [(ngModel)]="todo.done" (change)="saveTodo()" color="primary">
+      </mat-checkbox>
+      <div class="description" [ngClass]="{'done': todo.done}">
+        {{todo.desc}}
+      </div>
+    </div>
+    <div class="action-buttons">
+      <button mat-icon-button color="primary" (click)="edit()">
+        <mat-icon aria-label="Example icon-button with a heart icon">mode_edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="delete()">
+        <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="flex-container" *ngIf="isEditing">
+    <mat-form-field class="editing-input">
+      <input matInput type="text" placeholder="" [(ngModel)]="description"/>
+    </mat-form-field>
+    <div class="action-buttons">
+        <button mat-icon-button color="primary" (click)="save()" [disabled]="!description">
+          <mat-icon aria-label="Example icon-button with a heart icon">save</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="cancel()">
+          <mat-icon aria-label="Example icon-button with a heart icon">cancel</mat-icon>
+        </button>
+    </div>
+  </div>
+</mat-card>
