@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {TodoApiService} from '../todoApi.service';
 
+import {MatSnackBar} from '@angular/material';
+
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -14,7 +16,9 @@ export class TodoListComponent implements OnInit {
 
   public newTodoDesc: string;
 
-  constructor(public todoApiService: TodoApiService) {
+  constructor(
+    public todoApiService: TodoApiService,
+    public snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -45,12 +49,17 @@ export class TodoListComponent implements OnInit {
   deleteAllTodos() {
     this.todoApiService.deleteAllTodos()
       .then(result => {
+        this.snackBar.open('All Todos deleted', '', {
+          duration: 2000,
+        });
         this.todos = [];
       });
   }
 
-  test(item) {
-    console.log(item);
+  deleteListItem(id) {
+    this.todos = this.todos.filter((i) => {
+      return i._id !== id;
+    });
   }
 
 }

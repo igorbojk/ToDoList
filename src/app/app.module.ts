@@ -12,6 +12,7 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatIconModule,
+  MatSnackBarModule
 } from '@angular/material';
 import {TodoListComponent} from './todo-list/todo-list.component';
 import {FormsModule} from '@angular/forms';
@@ -34,7 +35,8 @@ import { TodoListItemComponent } from './todo-list-item/todo-list-item.component
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ],
   providers: [
     TodoApiService
